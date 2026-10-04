@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — Nuts &amp; Washers Catalogue | SFB Fasteners</title>
+  <meta name="description" content="Browse SFB Fasteners' full catalogue of hex nuts, lock nuts, flange nuts, flat washers, spring washers and structural washers. Filter by material, standard and finish.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="products">
+
+  <header id="site-header" class="site-header"></header>
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Products</span></nav>
+      <h1>Product Catalogue</h1>
+      <p class="sub">Nuts and washers to DIN, ISO, ASTM and EN standards. Filter by material, surface
+        finish and standard system — or send us a drawing for custom production.</p>
+    </div>
+  </section>
+
+  <div class="container catalog">
+
+    <!-- Sidebar filters -->
+    <aside class="filters">
+      <div class="fgroup">
+        <h4>Category</h4>
+        <div class="fbody" id="catList"></div>
+      </div>
+      <div class="fgroup">
+        <h4>Material</h4>
+        <div class="fbody" id="fMaterial"></div>
+      </div>
+      <div class="fgroup">
+        <h4>Surface Finish</h4>
+        <div class="fbody" id="fFinish"></div>
+      </div>
+      <div class="fgroup">
+        <h4>Standard System</h4>
+        <div class="fbody" id="fStd"></div>
+      </div>
+      <button class="reset" id="resetFilters">↺ Reset all filters</button>
+    </aside>
+
+    <!-- Results -->
+    <div>
+      <div class="catalog-head">
+        <h1>All Products</h1>
+        <span class="result-info" id="resultInfo"></span>
+      </div>
+      <p class="catalog-note">Every product line ships with dimensional inspection and mill test
+        certificates. Looking for a size or grade not listed? <a href="contact.html">Send your specification</a> —
+        custom production to drawing is our specialty.</p>
+
+      <div class="searchbar">
+        <input type="text" id="searchInput" placeholder="Search by name, standard (e.g. DIN 934), size…" aria-label="Search products">
+        <button type="button" aria-label="Search">Search</button>
+      </div>
+
+      <div class="active-tags" id="activeTags"></div>
+
+      <div class="grid grid-3" id="catalogGrid"></div>
+    </div>
+  </div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

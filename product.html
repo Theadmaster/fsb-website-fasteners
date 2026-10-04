@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | SFB Fasteners</title>
+  <meta name="description" content="Technical specifications, dimensions and RFQ for industrial nuts and washers to DIN / ISO / ASTM standards.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="product">
+
+  <header id="site-header" class="site-header"></header>
+
+  <section class="page-hero" style="padding:40px 0 34px">
+    <div class="container">
+      <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="products.html">Products</a> <span>/</span> <span id="bcName">Product</span></nav>
+    </div>
+  </section>
+
+  <div class="container" id="pdWrap"></div>
+
+  <div class="container related" id="relatedSec" style="display:none">
+    <h2>Related Products</h2>
+    <div class="grid grid-3" id="relatedGrid"></div>
+  </div>
+
+  <!-- CTA band -->
+  <section class="cta-band" id="relatedSecCTA">
+    <div class="container">
+      <div>
+        <h2>Need This Part in Volume?</h2>
+        <p>Send your sizes, material grade and target quantity — we quote within 24 hours, samples from stock on request.</p>
+      </div>
+      <a class="btn" href="contact.html" style="font-size:1.05rem;padding:14px 36px">Request a Quote →</a>
+    </div>
+  </section>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const id = new URLSearchParams(location.search).get('id');
+      const p = PRODUCTS.find(x => x.id === id);
+      if (p) document.getElementById('bcName').textContent = p.name;
+    });
+  </script>
+</body>
+</html>

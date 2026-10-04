@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; RFQ — Request a Quote | SFB Fasteners</title>
+  <meta name="description" content="Request a quote for industrial nuts and washers. SFB Fasteners replies to every RFQ within 24 hours with price, MOQ and lead time.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact">
+
+  <header id="site-header" class="site-header"></header>
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Contact &amp; RFQ</span></nav>
+      <h1>Request a Quote</h1>
+      <p class="sub">Send your specification — standard size, competitor part number or a drawing.
+        A real engineer reviews it and you get price, MOQ and lead time within 24 hours.</p>
+    </div>
+  </section>
+
+  <div class="container contact-grid">
+
+    <!-- Contact info -->
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+        <div>
+          <h3>Email — Fastest Response</h3>
+          <p><a href="mailto:victor.nicejob@gmail.com">victor.nicejob@gmail.com</a></p>
+          <p>Attach drawings in any format (PDF, DWG, STEP).</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.08 4.18 2 2 0 014.06 2h3a2 2 0 012 1.72c.13.96.37 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div>
+          <h3>Phone / WhatsApp</h3>
+          <p><a href="tel:+8619858185202">+86 198 5818 5202</a></p>
+          <p>WhatsApp / WeChat: +86 198 5818 5202</p>
+          <p>Mon – Sat · 8:00–18:00 (GMT+8)</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <h3>Factory Address</h3>
+          <p>No. 128 Haitong Industrial Road,<br>Ningbo 315000, Zhejiang, China</p>
+          <p>40 km from Ningbo port. Factory visits welcome.</p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <div>
+          <h3>What Happens Next</h3>
+          <p>① Engineer review within 24 h → ② Quotation with MOQ &amp; lead time → ③ Free samples from stock on request.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RFQ form -->
+    <form class="rfq-form" id="rfqForm">
+      <h2>Send Your Inquiry</h2>
+      <p class="hint">Fields marked <span style="color:#c0392b">*</span> are required. The more detail you give, the more accurate the quotation.</p>
+      <div class="form-grid">
+        <div class="fgroup">
+          <label for="fName">Your Name <span class="req">*</span></label>
+          <input type="text" id="fName" name="name" required placeholder="John Smith">
+        </div>
+        <div class="fgroup">
+          <label for="fEmail">Work Email <span class="req">*</span></label>
+          <input type="email" id="fEmail" name="email" required placeholder="john@company.com">
+        </div>
+        <div class="fgroup">
+          <label for="fCompany">Company</label>
+          <input type="text" id="fCompany" name="company" placeholder="Company Ltd.">
+        </div>
+        <div class="fgroup">
+          <label for="fCountry">Country / Destination Port</label>
+          <input type="text" id="fCountry" name="country" placeholder="e.g. Hamburg, Germany">
+        </div>
+        <div class="fgroup full">
+          <label for="fProduct">Product / Standard</label>
+          <input type="text" id="fProduct" name="product" placeholder="e.g. Hex Nut DIN 934 M10, A2-70, HDG">
+        </div>
+        <div class="fgroup">
+          <label for="fQty">Estimated Quantity</label>
+          <select id="fQty" name="quantity">
+            <option value="">Please select…</option>
+            <option>Sample only (no MOQ)</option>
+            <option>Under 500 kg</option>
+            <option>500 kg – 2 t</option>
+            <option>2 t – 10 t</option>
+            <option>Above 10 t / annual contract</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <label for="fIncoterm">Preferred Delivery Term</label>
+          <select id="fIncoterm" name="incoterm">
+            <option value="">Please select…</option>
+            <option>FOB Ningbo</option>
+            <option>CIF / CFR</option>
+            <option>DDP / DAP</option>
+            <option>EXW</option>
+          </select>
+        </div>
+        <div class="fgroup full">
+          <label for="fMsg">Specification Details</label>
+          <textarea id="fMsg" name="message" placeholder="Sizes, material grade, surface finish, thread, applicable standard, annual demand, target price…"></textarea>
+        </div>
+      </div>
+      <div class="submit-row">
+        <button type="submit" class="btn" style="font-size:1.02rem;padding:13px 34px">Submit Inquiry →</button>
+        <span class="note">Your information stays with SFB sales — never shared or resold.</span>
+      </div>
+      <div class="form-success" id="formSuccess">
+        ✓ Thank you, <b id="successName">there</b>! Your inquiry has been received.
+        Our sales engineer will reply within 24 hours (usually much sooner during GMT+8 business hours).
+      </div>
+    </form>
+  </div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
