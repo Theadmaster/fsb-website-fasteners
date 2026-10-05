@@ -1,4 +1,6 @@
-# Cloudflare Pages response headers
+# Cloudflare Workers assets response headers
+# NOTE: _headers concatenates ALL matching rules, so each path must match exactly one Cache-Control rule.
+
 # Security headers on all routes
 /*
   X-Content-Type-Options: nosniff
@@ -6,24 +8,17 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-# Product images / hero: immutable content, cache 30 days at edge + browser
-/assets/products/*
-  Cache-Control: public, max-age=2592000, immutable
-
+# Static assets (images, favicon): 7 days. HTML gets Workers' default max-age=0 must-revalidate, so deploys go live instantly.
 /assets/*
   Cache-Control: public, max-age=604800
 
-# CSS/JS hashed by content changes; moderate cache, revalidate on deploy
+# CSS/JS: 1 day
 /css/*
   Cache-Control: public, max-age=86400
 /js/*
   Cache-Control: public, max-age=86400
 
-# HTML: always revalidate so deploys appear immediately
-/*
-  Cache-Control: public, max-age=0, must-revalidate
-
-# Sitemap & robots: short cache
+# Sitemap & robots: 1 hour
 /sitemap.xml
   Cache-Control: public, max-age=3600
 /robots.txt
