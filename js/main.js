@@ -20,6 +20,16 @@ const LOGO_SVG = `
   <circle cx="24" cy="24" r="2.6" fill="#e87722"/>
 </svg>`;
 
+/* ---------- WhatsApp ---------- */
+const WA_NUMBER = '8619858185202';
+const WA_DEFAULT_MSG = 'Hello SFB Fasteners, I would like to enquire about your products.';
+const waLink = msg => `https://wa.me/${WA_NUMBER}${msg ? '?text=' + encodeURIComponent(msg) : ''}`;
+
+const WA_ICON = `
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+</svg>`;
+
 function renderChrome() {
   const page = document.body.dataset.page || '';
   const header = document.getElementById('site-header');
@@ -29,7 +39,7 @@ function renderChrome() {
       <div class="container">
         <div class="tb-links">
           <span class="tb-item">✉ victor.nicejob@gmail.com</span>
-          <span class="tb-item">☎ WhatsApp +86 198 5818 5202</span>
+          <a class="tb-item" href="${waLink(WA_DEFAULT_MSG)}" target="_blank" rel="noopener">☎ WhatsApp +86 198 5818 5202</a>
         </div>
         <div class="tb-links">
           <span class="tb-item">ISO 9001 : 2015 Certified Manufacturer</span>
@@ -42,7 +52,7 @@ function renderChrome() {
         <span class="brand-mark">${LOGO_SVG}</span>
         <span class="brand-text">
           <span class="brand-name">SFB <span>Fasteners</span></span>
-          <span class="brand-tag">Nuts &amp; Washers Manufacturer</span>
+          <span class="brand-tag">Bolts · Nuts · Washers Manufacturer</span>
         </span>
       </a>
       <nav class="main-nav" id="mainNav">
@@ -67,12 +77,14 @@ function renderChrome() {
           <span class="brand-mark">${LOGO_SVG}</span>
           <span class="brand-text"><span class="brand-name">SFB <span>Fasteners</span></span></span>
         </a>
-        <p>Manufacturer and exporter of industrial nuts and washers, supplying DIN / ISO / ASTM standard fasteners to distributors and OEM buyers in 40+ countries.</p>
+        <p>Manufacturer and exporter of industrial bolts, nuts and washers, supplying DIN / ISO / ASTM standard fasteners to distributors and OEM buyers in 40+ countries.</p>
         <div class="footer-cert"><span>ISO 9001</span><span>EN 10204 3.1</span><span>RoHS · REACH</span></div>
       </div>
       <div>
         <h4>Products</h4>
         <ul>
+          <li><a href="products.html?cat=bolts">Hex &amp; Heavy Hex Bolts</a></li>
+          <li><a href="products.html?cat=bolts">Stud Bolts &amp; Threaded Rod</a></li>
           <li><a href="products.html?cat=nuts">Hex &amp; Heavy Hex Nuts</a></li>
           <li><a href="products.html?cat=nuts&amp;type=lock">Lock &amp; Flange Nuts</a></li>
           <li><a href="products.html?cat=washers">Flat &amp; Fender Washers</a></li>
@@ -94,15 +106,15 @@ function renderChrome() {
         <ul>
           <li>No. 128 Haitong Industrial Road,<br>Ningbo 315000, Zhejiang, China</li>
           <li>✉ <a href="mailto:victor.nicejob@gmail.com">victor.nicejob@gmail.com</a></li>
-          <li>☎ <a href="tel:+8619858185202">WhatsApp +86 198 5818 5202</a></li>
-          <li>⌁ WhatsApp / WeChat: +86 198 5818 5202</li>
+          <li>☎ <a href="${waLink(WA_DEFAULT_MSG)}" target="_blank" rel="noopener">WhatsApp +86 198 5818 5202</a></li>
+          <li>⌁ WeChat: +86 198 5818 5202</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
         <span>© ${new Date().getFullYear()} SFB Fasteners Co., Ltd. All rights reserved.</span>
-        <span>Nuts &amp; Washers · DIN / ISO / ASTM Standards · Factory-Direct Export</span>
+        <span>Bolts · Nuts &amp; Washers · DIN / ISO / ASTM Standards · Factory-Direct Export</span>
       </div>
     </div>`;
   }
@@ -111,16 +123,39 @@ function renderChrome() {
   if (page !== 'contact') {
     const bar = document.createElement('div');
     bar.className = 'inquiry-bar';
-    bar.innerHTML = `<a class="btn" href="contact.html">Send Inquiry / RFQ</a>`;
+    bar.innerHTML = `
+      <a class="btn btn-wa" href="${waLink(WA_DEFAULT_MSG)}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">${WA_ICON}</a>
+      <a class="btn" href="contact.html">Send Inquiry / RFQ</a>`;
     document.body.appendChild(bar);
   }
+
+  /* floating WhatsApp button (all pages) */
+  const waFloat = document.createElement('a');
+  waFloat.className = 'wa-float';
+  waFloat.href = waLink(WA_DEFAULT_MSG);
+  waFloat.target = '_blank';
+  waFloat.rel = 'noopener';
+  waFloat.setAttribute('aria-label', 'Chat with SFB sales on WhatsApp');
+  waFloat.innerHTML = `${WA_ICON}<span class="wa-tip">Chat on WhatsApp</span>`;
+  document.body.appendChild(waFloat);
 }
 
 /* ---------- Product card ---------- */
+function productImg(p, cls = '') {
+  return `
+  <span class="thumb-fallback" aria-hidden="true">${DRAWINGS[p.drawing]()}</span>
+  <img class="${cls}" src="assets/products/${p.id}.png" alt="${p.name} — white background product photo"
+       loading="lazy" onerror="this.remove()">`;
+}
+
+function waProductMsg(p) {
+  return `Hello SFB Fasteners, I would like to enquire about ${p.name} (${p.standards[0]}).`;
+}
+
 function productCard(p) {
   return `
   <article class="p-card">
-    <a class="thumb" href="product.html?id=${p.id}">${DRAWINGS[p.drawing]()}</a>
+    <a class="thumb thumb-photo" href="product.html?id=${p.id}">${productImg(p)}</a>
     <div class="body">
       <div class="std">${p.standards.join(' · ')}</div>
       <h3><a href="product.html?id=${p.id}" style="color:inherit;text-decoration:none">${p.name}</a></h3>
@@ -131,6 +166,7 @@ function productCard(p) {
       </div>
       <div class="foot">
         <a class="btn" href="contact.html?product=${encodeURIComponent(p.name + ' (' + p.standards[0] + ')')}">Get Quote</a>
+        <a class="wa-mini" href="${waLink(waProductMsg(p))}" target="_blank" rel="noopener" aria-label="Enquire about ${p.name} on WhatsApp">${WA_ICON}</a>
         <a class="details" href="product.html?id=${p.id}">Details →</a>
       </div>
     </div>
@@ -143,7 +179,10 @@ function renderHome() {
   if (catWrap) {
     catWrap.innerHTML = Object.entries(CATEGORIES).map(([key, c]) => `
       <a class="cat-card" href="products.html?cat=${key}">
-        <span class="thumb">${DRAWINGS[c.icon]()}</span>
+        <span class="thumb thumb-photo">
+          <span class="thumb-fallback" aria-hidden="true">${DRAWINGS[c.icon]()}</span>
+          <img src="assets/products/${c.photo}.png" alt="${c.name} — product photo" loading="lazy" onerror="this.remove()">
+        </span>
         <span class="body">
           <h3>${c.name}</h3>
           <span class="desc">${c.desc}</span>
@@ -184,10 +223,13 @@ function renderCatalog() {
   };
   buildRows(document.getElementById('fMaterial'), MATERIALS, state.material);
   buildRows(document.getElementById('fFinish'), FINISHES, state.finish);
-  document.getElementById('fStd').innerHTML = ['DIN / ISO', 'ASTM / ASME'].map(s => `
+  document.getElementById('fStd').innerHTML = ['ISO / JIS', 'DIN', 'ASTM / ASME'].map(s => `
     <label class="frow"><input type="checkbox" value="${s}"><span>${s}</span></label>`).join('');
   document.querySelectorAll('#fStd input').forEach(i =>
-    i.addEventListener('change', () => apply()));
+    i.addEventListener('change', () => {
+      state.std = new Set([...document.querySelectorAll('#fStd input:checked')].map(x => x.value));
+      apply();
+    }));
 
   const searchInput = document.getElementById('searchInput');
   searchInput.value = state.q;
@@ -222,8 +264,8 @@ function renderCatalog() {
       if (state.finish.size && !p.finishes.some(f => state.finish.has(f))) return false;
       if (state.std.size) {
         const all = p.standards.join(' ');
-        const ok = [...state.std].some(s =>
-          s === 'DIN / ISO' ? /DIN|ISO/.test(all) : /ASTM|ASME|ANSI|EN /.test(all));
+        const tests = { 'ISO / JIS': /ISO|JIS/, 'DIN': /DIN/, 'ASTM / ASME': /ASTM|ASME|ANSI|EN / };
+        const ok = [...state.std].some(s => tests[s].test(all));
         if (!ok) return false;
       }
       if (q) {
@@ -245,7 +287,7 @@ function renderCatalog() {
     wrap.querySelectorAll('.tag').forEach(btn => btn.addEventListener('click', () => {
       const k = btn.dataset.k, v = btn.textContent.replace('✕ ', '');
       if (k === 'cat') { state.cat = 'all'; catList.querySelector('input[value=all]').checked = true; }
-      if (k === 'material') { state.material.delete(v === MATERIALS.carbon ? 'carbon' : 'stainless'); document.querySelector(`#fMaterial input[value=${v === MATERIALS.carbon ? 'carbon' : 'stainless'}]`).checked = false; }
+      if (k === 'material') { const key = Object.keys(MATERIALS).find(x => MATERIALS[x] === v); state.material.delete(key); document.querySelector(`#fMaterial input[value=${key}]`).checked = false; }
       if (k === 'finish') { const key = Object.keys(FINISHES).find(x => FINISHES[x] === v); state.finish.delete(key); document.querySelector(`#fFinish input[value=${key}]`).checked = false; }
       if (k === 'std') { document.querySelector(`#fStd input[value="${v}"]`).checked = false; }
       apply();
@@ -279,10 +321,13 @@ function renderDetail() {
   wrap.innerHTML = `
   <div class="pd">
     <div class="pd-gallery">
-      <div class="main-img">${DRAWINGS[p.drawing]()}</div>
+      <div class="main-img">
+        <span class="thumb-fallback" aria-hidden="true">${DRAWINGS[p.drawing]()}</span>
+        <img src="assets/products/${p.id}.png" alt="${p.name} — white background product photo" onerror="this.remove()">
+      </div>
       <div class="badges">
         ${p.standards.map(s => `<span class="badge">${s}</span>`).join('')}
-        <span class="badge">${p.cat === 'nuts' ? 'Nut Series' : 'Washer Series'}</span>
+        <span class="badge">${(CATEGORIES[p.cat] || {}).name || 'Series'}</span>
       </div>
     </div>
     <div class="pd-info">
@@ -299,9 +344,10 @@ function renderDetail() {
       </table>
       <div class="cta-row">
         <a class="btn" href="contact.html?product=${encodeURIComponent(p.name + ' (' + p.standards[0] + ')')}" style="font-size:1.05rem;padding:13px 30px">Request a Quote →</a>
+        <a class="btn btn-wa" href="${waLink(waProductMsg(p))}" target="_blank" rel="noopener" style="font-size:1.05rem;padding:13px 24px">${WA_ICON} WhatsApp Enquiry</a>
         <a class="btn btn-outline" href="products.html">← All Products</a>
       </div>
-      <p class="micro">Typical reply within 24 hours · Samples available for stock items · EN 10204 3.1 MTC with every shipment</p>
+      <p class="micro">Typical reply within 24 hours · WhatsApp usually replies within minutes (GMT+8) · Samples available for stock items · EN 10204 3.1 MTC with every shipment</p>
     </div>
   </div>
 
