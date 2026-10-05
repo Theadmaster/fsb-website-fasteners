@@ -1,0 +1,30 @@
+# Cloudflare Pages response headers
+# Security headers on all routes
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Product images / hero: immutable content, cache 30 days at edge + browser
+/assets/products/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=604800
+
+# CSS/JS hashed by content changes; moderate cache, revalidate on deploy
+/css/*
+  Cache-Control: public, max-age=86400
+/js/*
+  Cache-Control: public, max-age=86400
+
+# HTML: always revalidate so deploys appear immediately
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Sitemap & robots: short cache
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/robots.txt
+  Cache-Control: public, max-age=3600

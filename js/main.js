@@ -20,6 +20,39 @@ const LOGO_SVG = `
   <circle cx="24" cy="24" r="2.6" fill="#e87722"/>
 </svg>`;
 
+/* ---------- SEO helpers ---------- */
+const SITE_URL = 'https://etotrade.com';
+
+function setMetaTag(attr, key, content) {
+  let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('content', content);
+}
+
+function setCanonical(url) {
+  let el = document.head.querySelector('link[rel="canonical"]');
+  if (!el) {
+    el = document.createElement('link');
+    el.rel = 'canonical';
+    document.head.appendChild(el);
+  }
+  el.href = url;
+}
+
+function injectJsonLd(id, obj) {
+  const old = document.getElementById(id);
+  if (old) old.remove();
+  const s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.id = id;
+  s.textContent = JSON.stringify(obj);
+  document.head.appendChild(s);
+}
+
 /* ---------- WhatsApp ---------- */
 const WA_NUMBER = '8619858185202';
 const WA_DEFAULT_MSG = 'Hello SFB Fasteners, I would like to enquire about your products.';
@@ -175,6 +208,13 @@ function productCard(p) {
 
 /* ---------- Home: featured products & categories ---------- */
 function renderHome() {
+  injectJsonLd('ld-website', {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'SFB Fasteners',
+    url: SITE_URL
+  });
+
   const catWrap = document.getElementById('catGrid');
   if (catWrap) {
     catWrap.innerHTML = Object.entries(CATEGORIES).map(([key, c]) => `
@@ -200,6 +240,19 @@ function renderHome() {
 function renderCatalog() {
   const grid = document.getElementById('catalogGrid');
   if (!grid) return;
+
+  injectJsonLd('ld-itemlist', {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'SFB Fasteners Product Catalogue — Bolts, Nuts & Washers',
+    numberOfItems: PRODUCTS.length,
+    itemListElement: PRODUCTS.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${SITE_URL}/product.html?id=${p.id}`,
+      name: `${p.name} (${p.standards.join(', ')})`
+    }))
+  });
 
   const params = new URLSearchParams(location.search);
   const state = {
@@ -316,7 +369,38 @@ function renderDetail() {
   const id = new URLSearchParams(location.search).get('id');
   const p = PRODUCTS.find(x => x.id === id) || PRODUCTS[0];
 
-  document.title = `${p.name} — ${p.standards.join(' / ')} | SFB Fasteners`;
+  const pageTitle = `${p.name} — ${p.standards.join(' / ')} | SFB Fasteners`;
+  const pageDesc = `${p.name} to ${p.standards.join(', ')} standards — ${p.sizeNote}. ${p.summary} Factory-direct from SFB Fasteners with EN 10204 3.1 MTC. RFQ reply within 24 hours.`;
+  const pageUrl = `${SITE_URL}/product.html?id=${p.id}`;
+  const imgUrl = `${SITE_URL}/assets/products/${p.id}.png`;
+
+  document.title = pageTitle;
+  setMetaTag('name', 'description', pageDesc);
+  setCanonical(pageUrl);
+  setMetaTag('property', 'og:title', pageTitle);
+  setMetaTag('property', 'og:description', pageDesc);
+  setMetaTag('property', 'og:type', 'product');
+  setMetaTag('property', 'og:url', pageUrl);
+  setMetaTag('property', 'og:image', imgUrl);
+  setMetaTag('name', 'twitter:card', 'summary_large_image');
+  setMetaTag('name', 'twitter:title', pageTitle);
+  setMetaTag('name', 'twitter:description', pageDesc);
+  setMetaTag('name', 'twitter:image', imgUrl);
+
+  injectJsonLd('ld-product', {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: p.name,
+    image: [imgUrl],
+    description: p.desc,
+    sku: p.id,
+    category: (CATEGORIES[p.cat] || {}).name || 'Fasteners',
+    brand: { '@type': 'Brand', name: 'SFB Fasteners' },
+    manufacturer: { '@type': 'Organization', name: 'SFB Fasteners', url: SITE_URL },
+    additionalProperty: p.specs.map(([k, v]) => ({ '@type': 'PropertyValue', name: k, value: v }))
+      .concat([{ '@type': 'PropertyValue', name: 'Standards', value: p.standards.join(', ') },
+               { '@type': 'PropertyValue', name: 'Size Range', value: p.sizeNote }])
+  });
 
   wrap.innerHTML = `
   <div class="pd">

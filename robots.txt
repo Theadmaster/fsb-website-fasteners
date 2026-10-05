@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /*?q=
+Disallow: /*?cat=
+Disallow: /*?material=
+Disallow: /*?finish=
+Disallow: /*?std=
+
+Sitemap: https://etotrade.com/sitemap.xml
