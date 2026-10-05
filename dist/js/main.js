@@ -4,10 +4,10 @@
 
 /* ---------- Shared chrome (header / footer / inquiry bar) ---------- */
 const NAV = [
-  { id: 'home', href: 'index.html', label: 'Home' },
-  { id: 'products', href: 'products.html', label: 'Products' },
-  { id: 'about', href: 'about.html', label: 'About Us' },
-  { id: 'contact', href: 'contact.html', label: 'Contact & RFQ' }
+  { id: 'home', href: '/', label: 'Home' },
+  { id: 'products', href: 'products', label: 'Products' },
+  { id: 'about', href: 'about', label: 'About Us' },
+  { id: 'contact', href: 'contact', label: 'Contact & RFQ' }
 ];
 
 const LOGO_SVG = `
@@ -81,7 +81,7 @@ function renderChrome() {
       </div>
     </div>
     <div class="container header-inner">
-      <a class="brand" href="index.html">
+      <a class="brand" href="/">
         <span class="brand-mark">${LOGO_SVG}</span>
         <span class="brand-text">
           <span class="brand-name">SFB <span>Fasteners</span></span>
@@ -91,7 +91,7 @@ function renderChrome() {
       <nav class="main-nav" id="mainNav">
         ${NAV.map(n => `<a href="${n.href}" class="${page === n.id ? 'active' : ''}">${n.label}</a>`).join('')}
       </nav>
-      <a class="btn header-cta" href="contact.html">Request a Quote</a>
+      <a class="btn header-cta" href="contact">Request a Quote</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
@@ -106,7 +106,7 @@ function renderChrome() {
     footer.innerHTML = `
     <div class="container footer-main">
       <div class="footer-brand">
-        <a class="brand" href="index.html">
+        <a class="brand" href="/">
           <span class="brand-mark">${LOGO_SVG}</span>
           <span class="brand-text"><span class="brand-name">SFB <span>Fasteners</span></span></span>
         </a>
@@ -116,22 +116,22 @@ function renderChrome() {
       <div>
         <h4>Products</h4>
         <ul>
-          <li><a href="products.html?cat=bolts">Hex &amp; Heavy Hex Bolts</a></li>
-          <li><a href="products.html?cat=bolts">Stud Bolts &amp; Threaded Rod</a></li>
-          <li><a href="products.html?cat=nuts">Hex &amp; Heavy Hex Nuts</a></li>
-          <li><a href="products.html?cat=nuts&amp;type=lock">Lock &amp; Flange Nuts</a></li>
-          <li><a href="products.html?cat=washers">Flat &amp; Fender Washers</a></li>
-          <li><a href="products.html?cat=washers&amp;type=spring">Spring &amp; Lock Washers</a></li>
-          <li><a href="products.html">Full Catalogue</a></li>
+          <li><a href="products?cat=bolts">Hex &amp; Heavy Hex Bolts</a></li>
+          <li><a href="products?cat=bolts">Stud Bolts &amp; Threaded Rod</a></li>
+          <li><a href="products?cat=nuts">Hex &amp; Heavy Hex Nuts</a></li>
+          <li><a href="products?cat=nuts&amp;type=lock">Lock &amp; Flange Nuts</a></li>
+          <li><a href="products?cat=washers">Flat &amp; Fender Washers</a></li>
+          <li><a href="products?cat=washers&amp;type=spring">Spring &amp; Lock Washers</a></li>
+          <li><a href="products">Full Catalogue</a></li>
         </ul>
       </div>
       <div>
         <h4>Company</h4>
         <ul>
-          <li><a href="about.html">About SFB</a></li>
-          <li><a href="about.html#quality">Quality Control</a></li>
-          <li><a href="about.html#certificates">Certificates</a></li>
-          <li><a href="contact.html">Contact &amp; RFQ</a></li>
+          <li><a href="about">About SFB</a></li>
+          <li><a href="about#quality">Quality Control</a></li>
+          <li><a href="about#certificates">Certificates</a></li>
+          <li><a href="contact">Contact &amp; RFQ</a></li>
         </ul>
       </div>
       <div>
@@ -158,7 +158,7 @@ function renderChrome() {
     bar.className = 'inquiry-bar';
     bar.innerHTML = `
       <a class="btn btn-wa" href="${waLink(WA_DEFAULT_MSG)}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">${WA_ICON}</a>
-      <a class="btn" href="contact.html">Send Inquiry / RFQ</a>`;
+      <a class="btn" href="contact">Send Inquiry / RFQ</a>`;
     document.body.appendChild(bar);
   }
 
@@ -188,19 +188,19 @@ function waProductMsg(p) {
 function productCard(p) {
   return `
   <article class="p-card">
-    <a class="thumb thumb-photo" href="product.html?id=${p.id}">${productImg(p)}</a>
+    <a class="thumb thumb-photo" href="product?id=${p.id}">${productImg(p)}</a>
     <div class="body">
       <div class="std">${p.standards.join(' · ')}</div>
-      <h3><a href="product.html?id=${p.id}" style="color:inherit;text-decoration:none">${p.name}</a></h3>
+      <h3><a href="product?id=${p.id}" style="color:inherit;text-decoration:none">${p.name}</a></h3>
       <div class="specs">
         <b>Size:</b> ${p.sizeNote}<br>
         <b>Material:</b> ${p.materials.map(m => MATERIALS[m]).join(', ')}<br>
         <b>Finish:</b> ${p.finishes.map(f => FINISHES[f]).join(', ')}
       </div>
       <div class="foot">
-        <a class="btn" href="contact.html?product=${encodeURIComponent(p.name + ' (' + p.standards[0] + ')')}">Get Quote</a>
+        <a class="btn" href="contact?product=${encodeURIComponent(p.name + ' (' + p.standards[0] + ')')}">Get Quote</a>
         <a class="wa-mini" href="${waLink(waProductMsg(p))}" target="_blank" rel="noopener" aria-label="Enquire about ${p.name} on WhatsApp">${WA_ICON}</a>
-        <a class="details" href="product.html?id=${p.id}">Details →</a>
+        <a class="details" href="product?id=${p.id}">Details →</a>
       </div>
     </div>
   </article>`;
@@ -218,7 +218,7 @@ function renderHome() {
   const catWrap = document.getElementById('catGrid');
   if (catWrap) {
     catWrap.innerHTML = Object.entries(CATEGORIES).map(([key, c]) => `
-      <a class="cat-card" href="products.html?cat=${key}">
+      <a class="cat-card" href="products?cat=${key}">
         <span class="thumb thumb-photo">
           <span class="thumb-fallback" aria-hidden="true">${DRAWINGS[c.icon]()}</span>
           <img src="assets/products/${c.photo}.png" alt="${c.name} — product photo" loading="lazy" onerror="this.remove()">
@@ -249,7 +249,7 @@ function renderCatalog() {
     itemListElement: PRODUCTS.map((p, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `${SITE_URL}/product.html?id=${p.id}`,
+      url: `${SITE_URL}/product?id=${p.id}`,
       name: `${p.name} (${p.standards.join(', ')})`
     }))
   });
@@ -353,7 +353,7 @@ function renderCatalog() {
       ? list.map(productCard).join('')
       : `<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--text-muted)">
            <h3 style="margin-bottom:10px">No matching products</h3>
-           <p>Try removing some filters, or <a href="contact.html">send us your specification</a> — we produce to drawing as well.</p>
+           <p>Try removing some filters, or <a href="contact">send us your specification</a> — we produce to drawing as well.</p>
          </div>`;
     document.getElementById('resultInfo').textContent = `${list.length} product line${list.length === 1 ? '' : 's'}`;
     activeTag();
@@ -371,7 +371,7 @@ function renderDetail() {
 
   const pageTitle = `${p.name} — ${p.standards.join(' / ')} | SFB Fasteners`;
   const pageDesc = `${p.name} to ${p.standards.join(', ')} standards — ${p.sizeNote}. ${p.summary} Factory-direct from SFB Fasteners with EN 10204 3.1 MTC. RFQ reply within 24 hours.`;
-  const pageUrl = `${SITE_URL}/product.html?id=${p.id}`;
+  const pageUrl = `${SITE_URL}/product?id=${p.id}`;
   const imgUrl = `${SITE_URL}/assets/products/${p.id}.png`;
 
   document.title = pageTitle;
@@ -427,9 +427,9 @@ function renderDetail() {
         </tbody>
       </table>
       <div class="cta-row">
-        <a class="btn" href="contact.html?product=${encodeURIComponent(p.name + ' (' + p.standards[0] + ')')}" style="font-size:1.05rem;padding:13px 30px">Request a Quote →</a>
+        <a class="btn" href="contact?product=${encodeURIComponent(p.name + ' (' + p.standards[0] + ')')}" style="font-size:1.05rem;padding:13px 30px">Request a Quote →</a>
         <a class="btn btn-wa" href="${waLink(waProductMsg(p))}" target="_blank" rel="noopener" style="font-size:1.05rem;padding:13px 24px">${WA_ICON} WhatsApp Enquiry</a>
-        <a class="btn btn-outline" href="products.html">← All Products</a>
+        <a class="btn btn-outline" href="products">← All Products</a>
       </div>
       <p class="micro">Typical reply within 24 hours · WhatsApp usually replies within minutes (GMT+8) · Samples available for stock items · EN 10204 3.1 MTC with every shipment</p>
     </div>
