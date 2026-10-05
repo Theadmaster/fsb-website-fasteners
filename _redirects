@@ -1,6 +1,3 @@
-# Cloudflare Pages redirects
-# Force canonical apex domain (www -> apex), keep path & query
-https://www.etotrade.com/*  https://etotrade.com/:splat  301
-
+# Cloudflare Workers static assets redirects (relative URLs only)
 # /index.html -> clean root URL to avoid duplicate-content split
 /index.html  /  301
